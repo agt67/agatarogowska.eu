@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agata Rogowska — Chief Business Analyst</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0b0c10; --surface: #12141c; --border: #22263a; --border2: #2e3350;
+      --text: #cccad4; --muted: #5a5870; --bright: #e8e6f0;
+      --teal: #4ec9d4; --teal-dim: #1a3d42; --gold: #f0c840; --gold-dim: #3a3010;
+      --heading: 'Syne', sans-serif; --mono: 'IBM Plex Mono', monospace; --body: 'IBM Plex Sans', sans-serif;
+    }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      background-color: var(--bg);
+      background-image: radial-gradient(circle, #252840 1.5px, transparent 1.5px);
+      background-size: 32px 32px;
+      color: var(--text); font-family: var(--body); font-weight: 300; line-height: 1.7;
+    }
+    .page { max-width: 960px; margin: 0 auto; padding: 0 2rem 8rem; }
+
+    /* HEADER */
+    header { padding: 5rem 0 3rem; display: grid; grid-template-columns: 1fr auto; align-items: start; gap: 3rem; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+    .cube-wrap { position: absolute; right: -20px; top: 20px; opacity: 0.18; pointer-events: none; }
+    .cube-wrap svg { width: 260px; height: 260px; }
+    .name-block { position: relative; z-index: 1; }
+    .pre-name { font-family: var(--mono); font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: var(--teal); margin-bottom: 1rem; display: flex; align-items: center; gap: .75rem; }
+    .pre-name::before { content: ''; width: 28px; height: 1px; background: var(--teal); }
+    h1 { font-family: var(--heading); font-size: clamp(3rem,7vw,5.5rem); font-weight: 800; letter-spacing: -.03em; line-height: .95; color: var(--bright); }
+    h1 span { color: var(--teal); }
+    .tagline { margin-top: 1.2rem; font-family: var(--mono); font-size: .72rem; color: var(--muted); letter-spacing: .1em; }
+    .contact-block { font-family: var(--mono); font-size: .7rem; color: var(--muted); line-height: 2.2; text-align: right; padding-top: .5rem; }
+    .contact-block a { color: var(--muted); text-decoration: none; transition: color .2s; }
+    .contact-block a:hover { color: var(--teal); }
+
+    /* STATS */
+    .stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin: 2.5rem 0 0; }
+    .stat { background: var(--surface); padding: 1.4rem 1.5rem; position: relative; }
+    .stat-num { font-family: var(--heading); font-size: 2.4rem; font-weight: 800; color: var(--gold); line-height: 1; letter-spacing: -.03em; }
+    .stat-label { font-family: var(--mono); font-size: .6rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-top: .4rem; line-height: 1.5; }
+    .stat::after { content: ''; position: absolute; top: 8px; right: 8px; width: 5px; height: 5px; border-radius: 50%; background: var(--border2); }
+
+    /* INTRO */
+    .intro { padding: 3rem 0; border-bottom: 1px solid var(--border); }
+    .intro p { font-size: clamp(1rem,2vw,1.2rem); font-weight: 300; line-height: 1.8; color: var(--text); max-width: 720px; border-left: 2px solid var(--teal); padding-left: 1.5rem; }
+
+    /* SECTION */
+    section { padding: 3rem 0; border-bottom: 1px solid var(--border); }
+    section:last-of-type { border-bottom: none; }
+    .section-label { font-family: var(--mono); font-size: .62rem; letter-spacing: .25em; text-transform: uppercase; color: var(--teal); margin-bottom: 2.5rem; display: flex; align-items: center; gap: 1rem; }
+    .section-label .sec-num { color: var(--gold); font-size: .8rem; }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, var(--border2), transparent); }
+
+    /* TIMELINE */
+    .timeline { position: relative; padding-left: 2.5rem; }
+    .timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 8px; width: 1px; background: linear-gradient(to bottom, var(--teal), var(--teal-dim) 70%, transparent); }
+    .t-entry { position: relative; margin-bottom: 3rem; }
+    .t-entry:last-child { margin-bottom: 0; }
+    .t-entry::before { content: ''; position: absolute; left: -2.5rem; top: .55rem; width: 9px; height: 9px; border-radius: 50%; border: 2px solid var(--teal); background: var(--bg); transform: translateX(-4px); }
+    .t-entry.current::before { background: var(--teal); box-shadow: 0 0 10px var(--teal); }
+    .t-header { display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 1rem; margin-bottom: .5rem; }
+    .t-title { font-family: var(--heading); font-size: 1.1rem; font-weight: 600; color: var(--bright); letter-spacing: -.01em; }
+    .t-period { font-family: var(--mono); font-size: .64rem; color: var(--teal); white-space: nowrap; letter-spacing: .06em; }
+    .t-company { font-family: var(--mono); font-size: .66rem; color: var(--muted); margin-bottom: .75rem; letter-spacing: .08em; }
+    .t-body { font-size: .865rem; color: var(--text); line-height: 1.8; }
+    .t-body ul { list-style: none; }
+    .t-body ul li { padding-left: 1.2rem; position: relative; margin-bottom: .2rem; }
+    .t-body ul li::before { content: '▸'; position: absolute; left: 0; color: var(--teal); font-size: .75rem; top: .15rem; }
+
+    /* SKILLS TABLE */
+    .skills-table { width: 100%; border-collapse: collapse; border: 1px solid var(--border); }
+    .skills-table th { background: var(--surface); font-family: var(--mono); font-size: .6rem; letter-spacing: .18em; text-transform: uppercase; color: var(--teal); padding: .8rem 1.2rem; text-align: left; border: 1px solid var(--border); font-weight: 400; }
+    .skills-table td { background: var(--bg); padding: .9rem 1.2rem; border: 1px solid var(--border); font-size: .82rem; color: var(--text); vertical-align: top; line-height: 1.85; }
+    .tag { display: inline-block; font-family: var(--mono); font-size: .62rem; padding: .15rem .5rem; border: 1px solid var(--border2); color: var(--muted); margin: .1rem .1rem .1rem 0; letter-spacing: .05em; }
+
+    /* CERTS */
+    .cert-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(260px,1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+    .cert-cell { background: var(--bg); padding: 1.1rem 1.3rem; position: relative; transition: background .15s; }
+    .cert-cell:hover { background: var(--surface); }
+    .cert-year { font-family: var(--mono); font-size: .62rem; color: var(--gold); margin-bottom: .35rem; letter-spacing: .1em; }
+    .cert-name { font-size: .84rem; color: var(--bright); line-height: 1.45; }
+    .cert-issuer { font-family: var(--mono); font-size: .62rem; color: var(--muted); margin-top: .3rem; letter-spacing: .04em; }
+    .cert-cell::before { content: ''; position: absolute; top: 6px; left: 6px; width: 8px; height: 8px; border-top: 1px solid var(--border2); border-left: 1px solid var(--border2); }
+
+    /* EDUCATION */
+    .edu-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(220px,1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+    .edu-cell { background: var(--bg); padding: 1.3rem 1.4rem; }
+    .edu-year { font-family: var(--mono); font-size: .62rem; color: var(--teal); margin-bottom: .4rem; }
+    .edu-degree { font-family: var(--heading); font-size: .95rem; font-weight: 600; color: var(--bright); line-height: 1.35; }
+    .edu-school { font-family: var(--mono); font-size: .62rem; color: var(--muted); margin-top: .35rem; }
+
+    /* LANGUAGES */
+    .lang-row { display: flex; gap: 0; border: 1px solid var(--border); }
+    .lang-item { flex: 1; padding: 1.2rem 1.5rem; border-right: 1px solid var(--border); display: flex; align-items: center; gap: 1rem; }
+    .lang-item:last-child { border-right: none; }
+    .lang-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--teal); flex-shrink: 0; }
+    .lang-name { font-family: var(--heading); font-size: 1rem; font-weight: 600; color: var(--bright); }
+    .lang-level { font-family: var(--mono); font-size: .6rem; color: var(--muted); letter-spacing: .1em; margin-top: .1rem; }
+
+    .footer-note { padding-top: 3rem; font-family: var(--mono); font-size: .6rem; color: var(--muted); letter-spacing: .12em; text-align: center; }
+
+    @keyframes fadeIn { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+    header { animation: fadeIn .8s ease both; }
+    .stats { animation: fadeIn .8s .1s ease both; }
+    .intro { animation: fadeIn .8s .15s ease both; }
+    section:nth-of-type(1){animation: fadeIn .8s .20s ease both;}
+    section:nth-of-type(2){animation: fadeIn .8s .25s ease both;}
+    section:nth-of-type(3){animation: fadeIn .8s .30s ease both;}
+    section:nth-of-type(4){animation: fadeIn .8s .35s ease both;}
+    section:nth-of-type(5){animation: fadeIn .8s .40s ease both;}
+
+    @media print {
+      body { background: #fff; color: #111; background-image: none; }
+      :root { --bg:#fff; --surface:#f5f5f5; --border:#ccc; --border2:#aaa; --text:#333; --muted:#777; --bright:#000; --teal:#0088aa; --gold:#aa7700; }
+      .cube-wrap { display: none; }
+    }
+    @media(max-width:640px){
+      header { grid-template-columns:1fr; gap:1.5rem; }
+      .contact-block { text-align:left; }
+      .cube-wrap { display:none; }
+      .stats { grid-template-columns:repeat(2,1fr); }
+      .t-header { grid-template-columns:1fr; gap:.25rem; }
+      .lang-row { flex-direction:column; }
+      .lang-item { border-right:none; border-bottom:1px solid var(--border); }
+      .lang-item:last-child { border-bottom:none; }
+      .skills-table, .skills-table tbody, .skills-table tr, .skills-table td, .skills-table th { display:block; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="name-block">
+      <p class="pre-name">Resume · 2025</p>
+      <h1>AGATA<br /><span>ROGOWSKA</span></h1>
+      <p class="tagline">10+ yrs in HR process &amp; systems improvement &nbsp;·&nbsp; Making technology work for people</p>
+    </div>
+    <div class="contact-block">
+      <div><a href="mailto:mail@agatarogowska.eu">mail@agatarogowska.eu</a></div>
+      <div><a href="tel:+4591481228">+45 91 48 12 28</a></div>
+      <div style="white-space:nowrap"><a href="https://linkedin.com/in/arogowska" target="_blank">linkedin.com/in/arogowska</a></div>
+      <div><a href="https://agatarogowska.eu">agatarogowska.eu</a></div>
+    </div>
+    <div class="cube-wrap">
+      <svg viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="gTop" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#4ec9d4" stop-opacity="0.9"/><stop offset="100%" stop-color="#4ec9d4" stop-opacity="0.4"/></linearGradient>
+          <linearGradient id="gLeft" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#4ec9d4" stop-opacity="0.3"/><stop offset="100%" stop-color="#4ec9d4" stop-opacity="0.1"/></linearGradient>
+          <linearGradient id="gRight" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#4ec9d4" stop-opacity="0.15"/><stop offset="100%" stop-color="#4ec9d4" stop-opacity="0.05"/></linearGradient>
+        </defs>
+        <polygon points="130,30 210,75 130,120 50,75" fill="url(#gTop)"/>
+        <polygon points="50,75 130,120 130,210 50,165" fill="url(#gLeft)"/>
+        <polygon points="210,75 130,120 130,210 210,165" fill="url(#gRight)"/>
+        <line x1="130" y1="30" x2="210" y2="75" stroke="#4ec9d4" stroke-width="1.5" stroke-opacity="0.8"/>
+        <line x1="130" y1="30" x2="50" y2="75" stroke="#4ec9d4" stroke-width="1.5" stroke-opacity="0.8"/>
+        <line x1="210" y1="75" x2="210" y2="165" stroke="#4ec9d4" stroke-width="1.5" stroke-opacity="0.5"/>
+        <line x1="50" y1="75" x2="50" y2="165" stroke="#4ec9d4" stroke-width="1.5" stroke-opacity="0.5"/>
+        <line x1="50" y1="165" x2="130" y2="210" stroke="#4ec9d4" stroke-width="1.5" stroke-opacity="0.4"/>
+        <line x1="210" y1="165" x2="130" y2="210" stroke="#4ec9d4" stroke-width="1.5" stroke-opacity="0.4"/>
+        <line x1="130" y1="120" x2="130" y2="210" stroke="#4ec9d4" stroke-width="1" stroke-opacity="0.3" stroke-dasharray="4,4"/>
+        <line x1="130" y1="120" x2="50" y2="75" stroke="#4ec9d4" stroke-width="1" stroke-opacity="0.2" stroke-dasharray="4,4"/>
+        <line x1="130" y1="120" x2="210" y2="75" stroke="#4ec9d4" stroke-width="1" stroke-opacity="0.2" stroke-dasharray="4,4"/>
+        <polygon points="220,180 240,191 240,213 220,224 200,213 200,191" fill="none" stroke="#f0c840" stroke-width="0.8" stroke-opacity="0.5"/>
+        <polygon points="20,140 35,148 35,164 20,172 5,164 5,148" fill="none" stroke="#4ec9d4" stroke-width="0.8" stroke-opacity="0.4"/>
+        <polygon points="200,40 212,47 212,61 200,68 188,61 188,47" fill="none" stroke="#4ec9d4" stroke-width="0.6" stroke-opacity="0.3"/>
+        <circle cx="130" cy="30" r="3" fill="#4ec9d4" opacity="0.9"/>
+        <circle cx="50" cy="75" r="2.5" fill="#4ec9d4" opacity="0.7"/>
+        <circle cx="210" cy="75" r="2.5" fill="#4ec9d4" opacity="0.7"/>
+        <circle cx="130" cy="120" r="2" fill="#4ec9d4" opacity="0.5"/>
+        <circle cx="50" cy="165" r="2" fill="#4ec9d4" opacity="0.5"/>
+        <circle cx="210" cy="165" r="2" fill="#4ec9d4" opacity="0.5"/>
+        <circle cx="130" cy="210" r="2.5" fill="#4ec9d4" opacity="0.6"/>
+      </svg>
+    </div>
+  </header>
+
+  <div class="stats">
+    <div class="stat"><div class="stat-num">10+</div><div class="stat-label">Years bridging<br/>HR &amp; technology</div></div>
+    <div class="stat"><div class="stat-num">20k+</div><div class="stat-label">Employees on<br/>current HCM rollout</div></div>
+    <div class="stat"><div class="stat-num">8</div><div class="stat-label">Countries in scope<br/>DK · SE · NO · FI · UK · LT · PL · LU</div></div>
+  </div>
+
+  <div class="intro">
+    <p>Most people are either HR or IT. I am both — and that combination is rarer than it sounds. I understand payroll logic and compensation policy, but I also speak the language of data flows, system architecture, and automation. I don't believe in wasting time on manual tech work — automate or simplify it. I untangle complexity using data and analysis, making sure systems are logical, efficient, and insight-driven. I believe in fairness, equal pay, and transparent reward communication. And when technology frees people up from busywork, I spend that time crocheting, woodworking, and gardening.</p>
+  </div>
+
+  <section>
+    <div class="section-label"><span class="sec-num">01</span> Experience</div>
+    <div class="timeline">
+
+      <div class="t-entry current">
+        <div class="t-header"><div class="t-title">Chief Business Analyst — Job Architecture &amp; Compensation Squad</div><div class="t-period">Sep 2024 — Present</div></div>
+        <div class="t-company">Danske Bank · Copenhagen</div>
+        <div class="t-body"><ul>
+          <li>One of three BAs on the HCM Compensation module rollout across 8 countries (DK, SE, NO, FI, UK, LT, PL, LU) — responsible for system analysis, data quality, and data integration to payroll</li>
+          <li>Analysing and documenting compensation eligibility rules; ensuring data flows correctly from HCM into downstream payroll systems</li>
+          <li>Working within the Pay Transparency and Job Architecture &amp; Compensation Squad, People Tribe</li>
+        </ul></div>
+      </div>
+
+      <div class="t-entry">
+        <div class="t-header"><div class="t-title">Senior Business Analyst — Payroll &amp; Compensation Squad</div><div class="t-period">Sep 2023 — Aug 2024</div></div>
+        <div class="t-company">Danske Bank · Copenhagen</div>
+        <div class="t-body"><ul>
+          <li>Led the integration workstream as part of a major payroll vendor migration in Denmark</li>
+          <li>Contributed to the rollout of a new time &amp; absence application for more than 10,000 employees — mapping requirements, validating data flows, and supporting change</li>
+        </ul></div>
+      </div>
+
+      <div class="t-entry">
+        <div class="t-header"><div class="t-title">Business Analyst — Payroll &amp; Compensation Squad</div><div class="t-period">Dec 2022 — Sep 2023</div></div>
+        <div class="t-company">Danske Bank · Copenhagen</div>
+        <div class="t-body"><ul>
+          <li>Drove process and data flow improvements across payroll and system change initiatives within People Tribe</li>
+        </ul></div>
+      </div>
+
+      <div class="t-entry">
+        <div class="t-header"><div class="t-title">Development Consultant — Intelligent Automation CoE</div><div class="t-period">Feb 2021 — Dec 2022</div></div>
+        <div class="t-company">Danske Bank · Copenhagen</div>
+        <div class="t-body"><ul>
+          <li>Business Analyst for Robotic Process Automation; identified automation opportunities through process analysis and Gemba walks</li>
+          <li>Created and maintained Process Design Documents (PDDs) and collaborated with developers on end-to-end RPA delivery</li>
+          <li>Acted as point of contact between developers and business stakeholders for change requests and issue resolution</li>
+        </ul></div>
+      </div>
+
+      <div class="t-entry">
+        <div class="t-header"><div class="t-title">Consultant, Digitalisation &amp; Transformation — Automation &amp; Tech</div><div class="t-period">Jun 2020 — Jan 2021</div></div>
+        <div class="t-company">Danske Bank · Copenhagen</div>
+        <div class="t-body"><ul>
+          <li>Supported Improvement Stream for Project Scale Up in the Debt Collection area</li>
+          <li>Implemented dialer solution for the Debt Collection team in Odense</li>
+        </ul></div>
+      </div>
+
+      <div class="t-entry">
+        <div class="t-header"><div class="t-title">Process Automation Specialist</div><div class="t-period">Apr 2019 — May 2020</div></div>
+        <div class="t-company">GetResponse · Gdańsk</div>
+        <div class="t-body"><ul>
+          <li>Coordinated RPA implementation across the Back Office department</li>
+          <li>Automated HR processes including salary &amp; bonus calculation, hiring and termination workflows</li>
+          <li>Built automation for HR, Finance and Accountancy using VBA, macros and Excel formulas</li>
+          <li>Performed compensation benchmarking and leveling for new and existing roles</li>
+        </ul></div>
+      </div>
+
+      <div class="t-entry">
+        <div class="t-header"><div class="t-title">Compensation &amp; Benefits Specialist / Expert</div><div class="t-period">Jun 2017 — Mar 2019</div></div>
+        <div class="t-company">GetResponse · Gdańsk</div>
+        <div class="t-body"><ul>
+          <li>Designed and administered global employee benefits programmes (health, pension, wellness, PTO, compensation)</li>
+          <li>Implemented Employee Pension Programme for Polish employees</li>
+          <li>Designed commission strategies and managed cyclical bonus calculations for Sales teams across Poland, Russia, Malaysia and the US</li>
+        </ul></div>
+      </div>
+
+      <div class="t-entry">
+        <div class="t-header"><div class="t-title">HR Specialist</div><div class="t-period">Dec 2015 — May 2017</div></div>
+        <div class="t-company">Unilever Polska · Gdańsk</div>
+        <div class="t-body"><ul>
+          <li>Tracked HR data (FTEs, attrition, absence, overtime) in Excel and Workday</li>
+          <li>Supported World Class Manufacturing projects within the People Development pillar</li>
+          <li>Coordinated Human Error Root Cause Analysis and helped drive cultural and team development initiatives</li>
+        </ul></div>
+      </div>
+
+      <div class="t-entry">
+        <div class="t-header"><div class="t-title">Career Office Specialist</div><div class="t-period">May 2014 — Jun 2015</div></div>
+        <div class="t-company">WSB University · Gdańsk</div>
+        <div class="t-body"><ul>
+          <li>Internship Coordinator for EU-funded programme; organised domestic and international internships for 404 students</li>
+        </ul></div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label"><span class="sec-num">02</span> Expertise</div>
+    <table class="skills-table">
+      <thead>
+        <tr>
+          <th>Automation &amp; RPA</th>
+          <th>Data &amp; Analytics</th>
+          <th>HR &amp; Comp &amp; Ben</th>
+          <th>Agile &amp; Delivery</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="tag">UiPath</span><span class="tag">RPA Developer</span><span class="tag">RPA BA</span><br/>Process Design Docs<br/>Gemba / Process Analysis<br/>VBA &amp; Macro Scripting</td>
+          <td><span class="tag">Power BI</span><span class="tag">Qlik Sense</span><span class="tag">SQL</span><span class="tag">Python</span><br/>Data Flow Analysis<br/>Google Analytics<br/>IBM Data Science</td>
+          <td><span class="tag">Workday / HCM</span><br/>Compensation Benchmarking<br/>Benefits Programme Design<br/>Payroll &amp; Bonus Modelling<br/>Pay Transparency</td>
+          <td><span class="tag">SAFe® PO/PM</span><span class="tag">PSM I</span><br/>Stakeholder Management<br/>Project Coordination<br/>Microsoft 365 · Excel Adv.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <div class="section-label"><span class="sec-num">03</span> Certifications &amp; Training</div>
+    <div class="cert-grid">
+      <div class="cert-cell"><div class="cert-year">Apr 2026</div><div class="cert-name">AI Fluency: Framework &amp; Foundations</div><div class="cert-issuer">Anthropic</div></div>
+      <div class="cert-cell"><div class="cert-year">Jul 2025</div><div class="cert-name">Value Creation using AI, Automation &amp; Chatbots</div><div class="cert-issuer">xUnlocked</div></div>
+      <div class="cert-cell"><div class="cert-year">May 2025</div><div class="cert-name">Data and AI Essentials in Financial Services</div><div class="cert-issuer">Data Unlocked</div></div>
+      <div class="cert-cell"><div class="cert-year">Nov 2022</div><div class="cert-name">Certified SAFe® 5 Product Owner / Product Manager</div><div class="cert-issuer">Scaled Agile, Inc.</div></div>
+      <div class="cert-cell"><div class="cert-year">Apr 2023</div><div class="cert-name">AWS Cloud Practitioner Essentials</div><div class="cert-issuer">Amazon Web Services</div></div>
+      <div class="cert-cell"><div class="cert-year">Jun 2023</div><div class="cert-name">Program Analityk / Architekt Jutra</div><div class="cert-issuer">AnalitykArchitekt.pl</div></div>
+      <div class="cert-cell"><div class="cert-year">Mar 2021</div><div class="cert-name">Professional Scrum Master™ I</div><div class="cert-issuer">Scrum.org · ID 640156</div></div>
+      <div class="cert-cell"><div class="cert-year">Feb 2020</div><div class="cert-name">RPA Developer Foundation</div><div class="cert-issuer">UiPath</div></div>
+      <div class="cert-cell"><div class="cert-year">Jul 2019</div><div class="cert-name">RPA Implementation Manager Training</div><div class="cert-issuer">UiPath</div></div>
+      <div class="cert-cell"><div class="cert-year">May 2019</div><div class="cert-name">RPA Business Analyst Training</div><div class="cert-issuer">UiPath</div></div>
+      <div class="cert-cell"><div class="cert-year">Apr 2019</div><div class="cert-name">Data Analyst with Python · Python Programmer Track</div><div class="cert-issuer">DataCamp</div></div>
+      <div class="cert-cell"><div class="cert-year">Mar 2020</div><div class="cert-name">Data Science Foundations</div><div class="cert-issuer">Cognitive Class / IBM</div></div>
+      <div class="cert-cell"><div class="cert-year">Aug 2018</div><div class="cert-name">VBA MS Excel — Automation of Data Reporting &amp; Analysis</div><div class="cert-issuer">Altkom Akademia</div></div>
+      <div class="cert-cell"><div class="cert-year">Nov 2015</div><div class="cert-name">Excel Advanced Certificate</div><div class="cert-issuer">Agencja Rozwoju Pomorza SA</div></div>
+      <div class="cert-cell"><div class="cert-year">2016 — 2017</div><div class="cert-name">CAE — Cambridge English Advanced</div><div class="cert-issuer">Cambridge Assessment English</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label"><span class="sec-num">04</span> Education</div>
+    <div class="edu-grid">
+      <div class="edu-cell"><div class="edu-year">2018 — 2019</div><div class="edu-degree">Postgraduate Studies<br/>Data Science &amp; Big Data</div><div class="edu-school">WSB University of Gdańsk</div></div>
+      <div class="edu-cell"><div class="edu-year">2014 — 2015</div><div class="edu-degree">Postgraduate Studies<br/>Psychology in Business</div><div class="edu-school">WSB University of Gdańsk</div></div>
+      <div class="edu-cell"><div class="edu-year">2013 — 2015</div><div class="edu-degree">Master's Degree<br/>HR Management</div><div class="edu-school">WSB University of Gdańsk</div></div>
+      <div class="edu-cell"><div class="edu-year">2009 — 2013</div><div class="edu-degree">Bachelor's Degree<br/>Management</div><div class="edu-school">University of Gdańsk</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label"><span class="sec-num">05</span> Languages</div>
+    <div class="lang-row">
+      <div class="lang-item"><div class="lang-dot"></div><div><div class="lang-name">Polish</div><div class="lang-level">Native</div></div></div>
+      <div class="lang-item"><div class="lang-dot"></div><div><div class="lang-name">English</div><div class="lang-level">Proficient · CAE</div></div></div>
+      <div class="lang-item"><div class="lang-dot" style="background:var(--teal-dim);border:1px solid var(--teal);"></div><div><div class="lang-name">Danish</div><div class="lang-level">Conversational</div></div></div>
+    </div>
+  </section>
+
+</div>
+<p class="footer-note">agatarogowska.eu &nbsp;·&nbsp; 2025</p>
+</body>
+</html>
