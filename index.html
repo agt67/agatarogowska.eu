@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Agata Rogowska — Chief Business Analyst</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="192x192" href="favicon-192.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400&display=swap" rel="stylesheet" />
@@ -31,9 +34,14 @@
     .name-block { position: relative; z-index: 1; }
     .pre-name { font-family: var(--mono); font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: var(--teal); margin-bottom: 1rem; display: flex; align-items: center; gap: .75rem; }
     .pre-name::before { content: ''; width: 28px; height: 1px; background: var(--teal); }
-    h1 { font-family: var(--heading); font-size: clamp(3rem,7vw,5.5rem); font-weight: 800; letter-spacing: -.03em; line-height: .95; color: var(--bright); }
-    h1 span { color: var(--teal); }
-    .tagline { margin-top: 1.2rem; font-family: var(--mono); font-size: .72rem; color: var(--muted); letter-spacing: .1em; }
+
+    /* NAME — gold */
+    h1 { font-family: var(--heading); font-size: clamp(3rem,7vw,5.5rem); font-weight: 800; letter-spacing: -.03em; line-height: .95; color: var(--gold); }
+    h1 span { color: var(--gold); }
+
+    /* TAGLINE — body font, bigger, readable */
+    .tagline { margin-top: 1.2rem; font-family: var(--body); font-size: clamp(.9rem,1.6vw,1.05rem); color: #b0aec8; letter-spacing: .01em; font-weight: 300; }
+
     .contact-block { font-family: var(--mono); font-size: .7rem; color: var(--muted); line-height: 2.2; text-align: right; padding-top: .5rem; }
     .contact-block a { color: var(--muted); text-decoration: none; transition: color .2s; }
     .contact-block a:hover { color: var(--teal); }
@@ -45,9 +53,9 @@
     .stat-label { font-family: var(--mono); font-size: .6rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-top: .4rem; line-height: 1.5; }
     .stat::after { content: ''; position: absolute; top: 8px; right: 8px; width: 5px; height: 5px; border-radius: 50%; background: var(--border2); }
 
-    /* INTRO */
+    /* INTRO — smaller */
     .intro { padding: 3rem 0; border-bottom: 1px solid var(--border); }
-    .intro p { font-size: clamp(1rem,2vw,1.2rem); font-weight: 300; line-height: 1.8; color: var(--text); max-width: 800px; border-left: 2px solid var(--teal); padding-left: 1.5rem; }
+    .intro p { font-size: clamp(.875rem,1.4vw,.95rem); font-weight: 300; line-height: 1.9; color: var(--text); max-width: 800px; border-left: 2px solid var(--teal); padding-left: 1.5rem; }
 
     /* SECTION */
     section { padding: 3rem 0; border-bottom: 1px solid var(--border); }
@@ -66,7 +74,11 @@
     .t-header { display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 1rem; margin-bottom: .5rem; }
     .t-title { font-family: var(--heading); font-size: 1.1rem; font-weight: 600; color: var(--bright); letter-spacing: -.01em; }
     .t-period { font-family: var(--mono); font-size: .64rem; color: var(--teal); white-space: nowrap; letter-spacing: .06em; }
-    .t-company { font-family: var(--mono); font-size: .66rem; color: var(--muted); margin-bottom: .75rem; letter-spacing: .08em; }
+
+    /* COMPANY — more visible + logo support */
+    .t-company { font-family: var(--mono); font-size: .7rem; color: #a0a0bc; margin-bottom: .75rem; letter-spacing: .06em; display: flex; align-items: center; gap: .55rem; }
+    .t-company img { width: 14px; height: 14px; object-fit: contain; border-radius: 2px; opacity: .8; filter: brightness(1.3) saturate(0.8); }
+
     .t-body { font-size: .865rem; color: var(--text); line-height: 1.8; }
     .t-body ul { list-style: none; }
     .t-body ul li { padding-left: 1.2rem; position: relative; margin-bottom: .2rem; }
@@ -91,6 +103,9 @@
     .edu-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(220px,1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
     .edu-cell { background: var(--bg); padding: 1.3rem 1.4rem; }
     .edu-year { font-family: var(--mono); font-size: .62rem; color: var(--teal); margin-bottom: .4rem; }
+    /* Degree type — italic serif, muted */
+    .edu-type { font-family: 'Georgia', serif; font-style: italic; font-size: .78rem; color: #7a7a96; display: block; margin-bottom: .25rem; }
+    /* Subject — Syne bold, bright */
     .edu-degree { font-family: var(--heading); font-size: .95rem; font-weight: 600; color: var(--bright); line-height: 1.35; }
     .edu-school { font-family: var(--mono); font-size: .62rem; color: var(--muted); margin-top: .35rem; }
 
@@ -181,17 +196,17 @@
   </header>
 
   <div class="stats">
-    <div class="stat"><div class="stat-num">10+</div><div class="stat-label">Years improving <br/>systems and processes</div></div>
-    <div class="stat"><div class="stat-num">12+</div><div class="stat-label">Years working with HR  <br/></div></div>
-    <div class="stat"><div class="stat-num">8</div><div class="stat-label"> </div></div>
+    <div class="stat"><div class="stat-num">10+</div><div class="stat-label">Years improving<br/>systems and processes</div></div>
+    <div class="stat"><div class="stat-num">12+</div><div class="stat-label">Years working<br/>with HR</div></div>
+    <div class="stat"><div class="stat-num">20k+</div><div class="stat-label">Employees on<br/>current HCM rollout · 8 countries</div></div>
   </div>
 
   <div class="intro">
-    <p>Most people are either HR or IT. I am both. <br/> 
-      I understand payroll logic and compensation policy, but I also speak the language of data flows, system architecture, and automation.<br/> 
-      I avoid wasting time on repetitive tech tasks — automation and simplification are the keys. <br/> 
-      I untangle complexity using data and analysis, making sure systems are logical, efficient, and insight-driven.<br/> 
-      What matters to me: fairness, equal pay, and transparent reward communication.</p>
+    <p>Most people are either HR or IT. I am both.<br/>
+    I understand payroll logic and compensation policy, but I also speak the language of data flows, system architecture, and automation.<br/>
+    I avoid wasting time on repetitive tech tasks — automation and simplification are the keys.<br/>
+    I untangle complexity using data and analysis, making sure systems are logical, efficient, and insight-driven.<br/>
+    What matters to me: fairness, equal pay, and transparent reward communication.</p>
   </div>
 
   <section>
@@ -200,7 +215,7 @@
 
       <div class="t-entry current">
         <div class="t-header"><div class="t-title">Chief Business Analyst — Job Architecture &amp; Compensation Squad</div><div class="t-period">Sep 2024 — Present</div></div>
-        <div class="t-company">Danske Bank · Copenhagen</div>
+        <div class="t-company"><img src="https://logo.clearbit.com/danskebank.com" alt=""/>Danske Bank · Copenhagen</div>
         <div class="t-body"><ul>
           <li>One of three BAs on the HCM Compensation module rollout across 8 countries (DK, SE, NO, FI, UK, LT, PL, LU) — responsible for system analysis, data quality, and data integration to payroll</li>
           <li>Analysing and documenting compensation eligibility rules; ensuring data flows correctly from HCM into downstream payroll systems</li>
@@ -210,7 +225,7 @@
 
       <div class="t-entry">
         <div class="t-header"><div class="t-title">Senior Business Analyst — Payroll &amp; Compensation Squad</div><div class="t-period">Sep 2023 — Aug 2024</div></div>
-        <div class="t-company">Danske Bank · Copenhagen</div>
+        <div class="t-company"><img src="https://logo.clearbit.com/danskebank.com" alt=""/>Danske Bank · Copenhagen</div>
         <div class="t-body"><ul>
           <li>Led the integration workstream as part of a major payroll vendor migration in Denmark</li>
           <li>Contributed to the rollout of a new time &amp; absence application for more than 10,000 employees — mapping requirements, validating data flows, and supporting change</li>
@@ -219,7 +234,7 @@
 
       <div class="t-entry">
         <div class="t-header"><div class="t-title">Business Analyst — Payroll &amp; Compensation Squad</div><div class="t-period">Dec 2022 — Sep 2023</div></div>
-        <div class="t-company">Danske Bank · Copenhagen</div>
+        <div class="t-company"><img src="https://logo.clearbit.com/danskebank.com" alt=""/>Danske Bank · Copenhagen</div>
         <div class="t-body"><ul>
           <li>Drove process and data flow improvements across payroll and system change initiatives within People Tribe</li>
         </ul></div>
@@ -227,7 +242,7 @@
 
       <div class="t-entry">
         <div class="t-header"><div class="t-title">Development Consultant — Intelligent Automation CoE</div><div class="t-period">Feb 2021 — Dec 2022</div></div>
-        <div class="t-company">Danske Bank · Copenhagen</div>
+        <div class="t-company"><img src="https://logo.clearbit.com/danskebank.com" alt=""/>Danske Bank · Copenhagen</div>
         <div class="t-body"><ul>
           <li>Business Analyst for Robotic Process Automation; identified automation opportunities through process analysis and Gemba walks</li>
           <li>Created and maintained Process Design Documents (PDDs) and collaborated with developers on end-to-end RPA delivery</li>
@@ -237,7 +252,7 @@
 
       <div class="t-entry">
         <div class="t-header"><div class="t-title">Consultant, Digitalisation &amp; Transformation — Automation &amp; Tech</div><div class="t-period">Jun 2020 — Jan 2021</div></div>
-        <div class="t-company">Danske Bank · Copenhagen</div>
+        <div class="t-company"><img src="https://logo.clearbit.com/danskebank.com" alt=""/>Danske Bank · Copenhagen</div>
         <div class="t-body"><ul>
           <li>Supported Improvement Stream for Project Scale Up in the Debt Collection area</li>
           <li>Implemented dialer solution for the Debt Collection team in Odense</li>
@@ -246,7 +261,7 @@
 
       <div class="t-entry">
         <div class="t-header"><div class="t-title">Process Automation Specialist</div><div class="t-period">Apr 2019 — May 2020</div></div>
-        <div class="t-company">GetResponse · Gdańsk</div>
+        <div class="t-company"><img src="https://logo.clearbit.com/getresponse.com" alt=""/>GetResponse · Gdańsk</div>
         <div class="t-body"><ul>
           <li>Coordinated RPA implementation across the Back Office department</li>
           <li>Automated HR processes including salary &amp; bonus calculation, hiring and termination workflows</li>
@@ -257,7 +272,7 @@
 
       <div class="t-entry">
         <div class="t-header"><div class="t-title">Compensation &amp; Benefits Specialist / Expert</div><div class="t-period">Jun 2017 — Mar 2019</div></div>
-        <div class="t-company">GetResponse · Gdańsk</div>
+        <div class="t-company"><img src="https://logo.clearbit.com/getresponse.com" alt=""/>GetResponse · Gdańsk</div>
         <div class="t-body"><ul>
           <li>Designed and administered global employee benefits programmes (health, pension, wellness, PTO, compensation)</li>
           <li>Implemented Employee Pension Programme for Polish employees</li>
@@ -267,7 +282,7 @@
 
       <div class="t-entry">
         <div class="t-header"><div class="t-title">HR Specialist</div><div class="t-period">Dec 2015 — May 2017</div></div>
-        <div class="t-company">Unilever Polska · Gdańsk</div>
+        <div class="t-company"><img src="https://logo.clearbit.com/unilever.com" alt=""/>Unilever Polska · Gdańsk</div>
         <div class="t-body"><ul>
           <li>Tracked HR data (FTEs, attrition, absence, overtime) in Excel and Workday</li>
           <li>Supported World Class Manufacturing projects within the People Development pillar</li>
@@ -316,7 +331,7 @@
       <div class="cert-cell"><div class="cert-year">May 2025</div><div class="cert-name">Data and AI Essentials in Financial Services</div><div class="cert-issuer">Data Unlocked</div></div>
       <div class="cert-cell"><div class="cert-year">Nov 2022</div><div class="cert-name">Certified SAFe® 5 Product Owner / Product Manager</div><div class="cert-issuer">Scaled Agile, Inc.</div></div>
       <div class="cert-cell"><div class="cert-year">Apr 2023</div><div class="cert-name">AWS Cloud Practitioner Essentials</div><div class="cert-issuer">Amazon Web Services</div></div>
-      <div class="cert-cell"><div class="cert-year">Jun 2023</div><div class="cert-name">Program Analyst/Architect of the future</div><div class="cert-issuer">AnalitykArchitekt.pl</div></div>
+      <div class="cert-cell"><div class="cert-year">Jun 2023</div><div class="cert-name">Program Analyst / Architect of the Future</div><div class="cert-issuer">AnalitykArchitekt.pl</div></div>
       <div class="cert-cell"><div class="cert-year">Mar 2021</div><div class="cert-name">Professional Scrum Master™ I</div><div class="cert-issuer">Scrum.org · ID 640156</div></div>
       <div class="cert-cell"><div class="cert-year">Feb 2020</div><div class="cert-name">RPA Developer Foundation</div><div class="cert-issuer">UiPath</div></div>
       <div class="cert-cell"><div class="cert-year">Jul 2019</div><div class="cert-name">RPA Implementation Manager Training</div><div class="cert-issuer">UiPath</div></div>
@@ -331,10 +346,30 @@
   <section>
     <div class="section-label"><span class="sec-num">04</span> Education</div>
     <div class="edu-grid">
-      <div class="edu-cell"><div class="edu-year">2018 — 2019</div><div class="edu-degree">Postgraduate Studies<br/>Data Engineering &amp; Big Data</div><div class="edu-school">WSB University of Gdańsk</div></div>
-      <div class="edu-cell"><div class="edu-year">2014 — 2015</div><div class="edu-degree">Postgraduate Studies<br/>Psychology in Business</div><div class="edu-school">WSB University of Gdańsk</div></div>
-      <div class="edu-cell"><div class="edu-year">2013 — 2015</div><div class="edu-degree">Master's Degree<br/>HR Management</div><div class="edu-school">WSB University of Gdańsk</div></div>
-      <div class="edu-cell"><div class="edu-year">2009 — 2013</div><div class="edu-degree">Bachelor's Degree<br/>Management</div><div class="edu-school">University of Gdańsk</div></div>
+      <div class="edu-cell">
+        <div class="edu-year">2018 — 2019</div>
+        <span class="edu-type">Postgraduate Studies</span>
+        <div class="edu-degree">Data Engineering &amp; Big Data</div>
+        <div class="edu-school">WSB University of Gdańsk</div>
+      </div>
+      <div class="edu-cell">
+        <div class="edu-year">2014 — 2015</div>
+        <span class="edu-type">Postgraduate Studies</span>
+        <div class="edu-degree">Psychology in Business</div>
+        <div class="edu-school">WSB University of Gdańsk</div>
+      </div>
+      <div class="edu-cell">
+        <div class="edu-year">2013 — 2015</div>
+        <span class="edu-type">Master's Degree</span>
+        <div class="edu-degree">HR Management</div>
+        <div class="edu-school">WSB University of Gdańsk</div>
+      </div>
+      <div class="edu-cell">
+        <div class="edu-year">2009 — 2013</div>
+        <span class="edu-type">Bachelor's Degree</span>
+        <div class="edu-degree">Management</div>
+        <div class="edu-school">University of Gdańsk</div>
+      </div>
     </div>
   </section>
 
@@ -348,6 +383,6 @@
   </section>
 
 </div>
-<p class="footer-note">agatarogowska.eu &nbsp;·&nbsp; 2025</p>
+<p class="footer-note">agatarogowska.eu &nbsp;·&nbsp; 2026</p>
 </body>
 </html>
